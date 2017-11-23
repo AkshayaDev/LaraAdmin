@@ -17,7 +17,7 @@ Route::get('/', ['as' => 'home', function () {
 
 Route::get('/admin', 'AdminController@login');
 Route::get('/admin/login', ['as' => 'AdminLogin', 'uses' => 'AdminController@login']);
-Route::post('/admin/login', ['before' => 'csrf', 'as' => 'DoAdminLogin', 'uses' => 'Auth\LoginController@doLogin']);
+Route::post('/admin/login', ['before' => 'csrf', 'as' => 'DoAdminLogin', 'uses' => 'Auth\LoginController@authenticate']);
 Route::get('/admin/register', ['as' => 'AdminRegister', 'uses' => 'AdminController@register']);
 
 Route::get('/page-not-found', function() {
@@ -27,3 +27,10 @@ Route::get('/page-not-found', function() {
 Route::get('/internal-server-error', function() {
 	return view('admin.500');
 });
+
+Route::get('/dashboard', ['as'=>'dashboard', 'uses'=>'AdminController@showDashboard'])->middleware('auth');
+Route::get('/dashboard/logout', function () {
+    // Only authenticated users may enter...
+    Auth::logout();
+    return redirect('admin/login');
+})->middleware('auth');
