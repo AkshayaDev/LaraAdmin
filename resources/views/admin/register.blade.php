@@ -24,7 +24,7 @@
         <div class="text-center">
           <button type="submit" class="btn btn-primary btn-block enter-btn">LOG IN</button>
         </div>
-        <p class="existing-user text-center pt-4 mb-0">Already have an acount?&nbsp;<a href="{{ route('AdminLogin') }}">Sign In</a></p>
+        <p class="existing-user text-center pt-4 mb-0">Already have an acount?&nbsp;<a href="{{ route('login') }}">Sign In</a></p>
       </form>
     </div>
   </div>

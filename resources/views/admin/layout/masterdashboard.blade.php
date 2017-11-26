@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Dashboard</title>
+    <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{ config('app.name', 'Laravel') }}</title>
   <link rel="stylesheet" href="{{ asset('assets/admin/node_modules/font-awesome/css/font-awesome.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/admin/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />

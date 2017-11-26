@@ -26,22 +26,22 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
     function authenticate(Request $request) {
         $this->validate($request,array(
-            'username' => 'required',
+            'email' => 'required|email',
             'password' => 'required|min:6'
         ),array(
-            'username.required' => 'Username is required.',
+            'email.required' => 'Email is required.',
             'password.required' => 'Password is required.'
         ));
 
-        if (Auth::attempt(['name' => $request['username'], 'password' => $request['password'], 'activated' => true])) {
+        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'activated' => true],$request['remember'])) {
             // Authentication passed...
-            return redirect()->intended('dashboard');
+            return redirect()->route('dashboard')->with('status','Successfully logged in.');
         }else{
-            return back()->withInput();
+            return back()->withInput()->withErrors(['password'=>'Wrong email/password combination.']);
         }
     }
 }

@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'akshaya',
+            'username' => 'akshaya',
             'first_name' => 'Akshaya',
             'last_name' => 'Swaroop',
             'email' => 'akshaya@gmail.com',

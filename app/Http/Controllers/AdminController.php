@@ -14,7 +14,7 @@ class AdminController extends Controller
 	function login() {
 		if (Auth::check()) {
             // The user is logged in...
-            return redirect('dashboard');
+            return redirect()->route('dashboard');
         }
 		return view('admin.login');
 	}
@@ -22,7 +22,7 @@ class AdminController extends Controller
 	function register() {
 		if (Auth::check()) {
             // The user is logged in...
-            return redirect('dashboard');
+            return redirect()->route('dashboard');
         }
 		return view('admin.register');
 	}

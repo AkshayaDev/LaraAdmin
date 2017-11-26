@@ -7,9 +7,9 @@
       <h3 class="card-title text-left mb-3">Login</h3>
       {{ Form::open(['route' => 'DoAdminLogin']) }}
         <div class="form-group">
-          {{ Form::text('username',old('username'),array('class'=>'form-control p_input','placeholder'=>'Username')) }}
-          @if ($errors->has('username'))
-            <p style="color: #ff0000;">{{ $errors->first('username') }}</p>
+          {{ Form::email('email',old('email'),array('class'=>'form-control p_input','placeholder'=>'Email')) }}
+          @if ($errors->has('email'))
+            <p style="color: #ff0000;">{{ $errors->first('email') }}</p>
           @endif
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
           @endif
         </div>
         <div class="form-group d-flex align-items-center justify-content-between">
-          <div class="form-check"><label>{{ Form::checkbox('remember', 'remember', false,array('class'=>'form-check-input')) }} Remember me</label></div>
+          <div class="form-check"><label>{{ Form::checkbox('remember', 'true', false,array('class'=>'form-check-input')) }} Remember me</label></div>
           <a href="#" class="forgot-pass">Forgot password</a>
         </div>
         <div class="text-center">
